@@ -1,4 +1,4 @@
-name: Build Android
+name: Expo Build & Lint
 
 on:
   push:
@@ -11,21 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📦 Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: ⚙️ Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: 📥 Install dependencies
         run: npm ci
 
-      - name: Run Lint
+      - name: 🧹 Run Lint
         run: npm run lint
 
-      - name: Build Android APK
-        run: |
-          cd android
-          ./gradlew assembleRelease
+      - name: 🚀 Test Expo Build (dev)
+        run: npx expo export --platform android

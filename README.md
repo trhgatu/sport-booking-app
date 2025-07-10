@@ -7,7 +7,7 @@
 
 ![Expo](https://img.shields.io/badge/Expo-~53.0.17-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-✓-3178c6)
-![CI/CD](https://github.com/InfinityDevTeam/sport-booking-app/actions/workflows/ci.yml/badge.svg)
+![CI/CD](https://github.com/trhgatu/sport-booking-app/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
@@ -26,7 +26,8 @@
 - **expo-router** (App Router style)
 - **React Navigation**
 - **ESLint + Prettier**
-- **CI/CD** với GitHub Actions (tự động build Android/iOS)
+- **CI/CD** với GitHub Actions (tự động lint & test build)
+- **EAS Build** (Expo Application Services) – tạo APK nhanh chóng
 
 ---
 
@@ -68,19 +69,14 @@ npm run ios
 ### ✅ Lint & Format
 
 ```bash
-# Kiểm tra lint
-npm run lint
-
-# Format toàn bộ project bằng Prettier
-npm run format
-
-# Kiểm tra vi phạm Prettier (CI sẽ fail nếu có)
-npm run format:check
+npm run lint            # Kiểm tra lỗi lint
+npm run format          # Format toàn bộ project
+npm run format:check    # Kiểm tra vi phạm prettier
 ```
 
 ### 💥 Pre-commit Hook
 
-> Đã tích hợp Husky + lint-staged → mỗi lần commit sẽ tự động chạy `eslint` và `prettier`.
+> Đã tích hợp Husky + lint-staged → mỗi lần commit sẽ tự động format + lint.
 
 ---
 
@@ -102,30 +98,32 @@ npm run format:check
 
 ## 🧪 CI/CD (GitHub Actions)
 
-> CI sẽ tự động chạy lint + build app Android mỗi khi push vào `main`
+> CI tự động lint + test build Android (expo export)
 
-- `.github/workflows/ci.yml` đã được cấu hình sẵn
-- Nếu dùng Expo EAS Build → có thể tích hợp thêm EAS CLI (build APK/IPA thực tế)
+- `.github/workflows/ci.yml` đã cấu hình sẵn
+- Có thể nâng cấp dùng `eas build` production (APK/AAB/IPA)
+- Kết hợp EAS để dev mobile build APK dễ dàng
 
 ---
 
 ## 📦 Notes
 
-- Dự án dùng `expo-router` nên cấu trúc tương tự Next.js (app-based routing)
-- Tương lai sẽ kết nối với **API backend** để sync tài khoản, đơn đặt sân, noti,...
+- Sử dụng `expo-router` (giống Next.js routing)
+- Tự động format và kiểm tra code khi commit
+- Sẽ kết nối với hệ thống backend (đặt sân, thông báo, thanh toán,...)
 
 ---
 
-## 🪄 Contributors
+## 🧙‍♂️ Contributors
 
-- 🧙‍♂️ Infinity – System Architect
+- 🧙‍♂️[@trhgatu](https://github.com/trhgatu) – System Architect
 - 📱 [@AnnKiz3110](https://github.com/AnnKiz3110) – Mobile Developer
 
 ---
 
 ## ❤️ Philosophy
 
-> Code phải đẹp, sạch và có tổ chức – vì đây không chỉ là sản phẩm, mà còn là thanh kiếm thứ hai trong hệ sinh thái Sport Booking Platform.
+> Code phải đẹp, sạch và có tổ chức – vì đây không chỉ là sản phẩm, mà còn là hệ sinh thái Sport Booking Platform.
 
 ---
 
